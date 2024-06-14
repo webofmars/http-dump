@@ -1,12 +1,14 @@
-FROM golang:1.14.0 AS builder
+FROM golang:1.22 AS builder
 
 WORKDIR /go/src/github.com/daime/http-dump
 
-COPY main.go .
+COPY src/ ./
 
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o http-dump .
 
-FROM marcosmorelli/debian-base-image
+FROM gcr.io/distroless/static-debian12
+
+ENV LISTEN_PORT=8080
 
 WORKDIR /root/
 

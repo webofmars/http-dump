@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-var port = "8080"
+var port = os.Getenv("LISTEN_PORT")
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
