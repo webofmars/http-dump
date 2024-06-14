@@ -1,6 +1,6 @@
 FROM golang:1.22 AS builder
 
-WORKDIR /go/src/github.com/daime/http-dump
+WORKDIR /go/src/github.com/webofmars/http-dump
 
 COPY src/ ./
 
@@ -12,7 +12,7 @@ ENV LISTEN_PORT=8080
 
 WORKDIR /root/
 
-COPY --from=0 /go/src/github.com/daime/http-dump/http-dump .
+COPY --from=0 /go/src/github.com/webofmars/http-dump/http-dump .
 
 EXPOSE 8080
 
